@@ -7,40 +7,39 @@ public class Car implements CarbonFootprint {
     private int fuelFlag;
 
     private enum FuelType {
-        PETROL, DIESEL
+        PETROL, DIESEL, NOT_SPECIFIED
     }
 
     private FuelType fuelType;
 
-    public Car(){
-        // Default constructor
-    }
-    public Car(String model, double averageConsumption, double distanceTraveled, int fuelFlag) {
-        this.model = model;
-        this.averageConsumption = averageConsumption;
-        this.distanceTraveled = distanceTraveled;
-        this.fuelFlag = fuelFlag;
+    public Car(String model, double averageConsumption, double distanceTraveled, int fuelTypeFlag) {
+        this.model = setModel(model);
+        this.averageConsumption = setAverageConsumption(averageConsumption);
+        this.distanceTraveled = setDistanceTraveled(distanceTraveled);
+        this.fuelFlag = setFuelFlag(fuelTypeFlag);
     }
 
-    public void setModel(String model) {
-        this.model = model;
+    private String setModel(String model) {
+        // Validate the model
+        String upperCaseModel = model.toUpperCase();
+        return upperCaseModel;
     }
 
     public String getModel() {
         return this.model;
     }
 
-    public void setAverageConsumption(double averageConsumption) {
+    private double setAverageConsumption(double averageConsumption) {
         // Remember to add validations
-        this.averageConsumption = averageConsumption;
+        return averageConsumption;
     }
 
     public double getAverageConsumption() {
         return this.averageConsumption;
     }
 
-    public void setDistanceTraveled(double distancetraveled) {
-        this.distanceTraveled = distancetraveled;
+    private double setDistanceTraveled(double distancetraveled) {
+        return distancetraveled;
     }
 
     public double getDistanceTraveled() {
@@ -51,11 +50,12 @@ public class Car implements CarbonFootprint {
         return this.fuelType;
     }
 
-    public void setFuelFlag(int flag) {
+    private int setFuelFlag(int fuelTypeFlag) {
         // Validate
-        if (flag > 0 && flag <= 2) {
-            this.fuelFlag = flag;
+        if (fuelTypeFlag > 0 && fuelTypeFlag <= 2) {
+            return fuelTypeFlag;
         }
+        return 10; // Error code
     }
 
     // Calculates the carbon foot print for the car
@@ -63,8 +63,7 @@ public class Car implements CarbonFootprint {
     public double getCarbonFootprint() {
         // Calculates the carbon foot print
         double footPrint = 0;
-
-        footPrint = calculateRate()*distanceTraveled;
+        footPrint = calculateRate() * distanceTraveled;
         return footPrint;
     }
 
@@ -74,19 +73,18 @@ public class Car implements CarbonFootprint {
         final double PETROL_RATE = 8.89; // per 100km
         final double DIESEL_RATE = 10.14; // per 100km
         final int DISTANCE = 100;
-
         double rate = 0; // amount of CO2 produced per Km
+
+        setFuelType(); // Update the fuel type before calculating
 
         switch (this.fuelFlag) {
             case 1:
                 // This is for diesel
-                updateFuelType();
                 rate = (DIESEL_RATE * this.averageConsumption) / DISTANCE;
                 return rate;
 
             case 2:
                 // This is for petrol
-                updateFuelType();
                 rate = (PETROL_RATE * this.averageConsumption) / DISTANCE;
                 return rate;
             default:
@@ -95,11 +93,20 @@ public class Car implements CarbonFootprint {
     }
 
     // update the fuel type
-    private void updateFuelType() {
-        if (this.fuelFlag == 1) {
-            this.fuelType = FuelType.DIESEL;
-        } else if (fuelFlag == 2) {
-            this.fuelType = FuelType.PETROL;
+    private void setFuelType() {
+        switch (this.fuelFlag) {
+            case 1:
+                // DIESEL
+                this.fuelType = FuelType.DIESEL;
+                break;
+            case 2:
+                // PETROL
+                this.fuelType = FuelType.PETROL;
+                break;
+            case 10: // Error occured
+                // for invalid type
+                this.fuelType = FuelType.NOT_SPECIFIED;
+                break;
         }
     }
 
