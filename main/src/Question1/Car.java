@@ -1,5 +1,6 @@
-// This is the cars class that calculates the carbon foot print from different cars
+package Question1;
 
+// This is the cars class that calculates the carbon foot print from different cars
 public class Car implements CarbonFootprint {
     private String model;
     private double averageConsumption;

@@ -1,12 +1,12 @@
+package Question2;
 import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
 
 public class GuessTests {
     @Test
     public void testPlay(){
         // Arrange
-        var game = new Guess();
+        Guess game = new Guess();
         var expected = false;
         
         // actual 

@@ -5,6 +5,7 @@
  * @Lecturer Mr. Chibuluma
  * Date: 18-05-2023
  */
+package Question2;
 
 import java.security.SecureRandom;
 import java.awt.Color;
