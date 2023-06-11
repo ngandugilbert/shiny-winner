@@ -18,6 +18,7 @@ public class Car implements CarbonFootprint {
         this.averageConsumption = setAverageConsumption(averageConsumption);
         this.distanceTraveled = setDistanceTraveled(distanceTraveled);
         this.fuelFlag = setFuelFlag(fuelTypeFlag);
+        setFuelType(); // Update the fuel type before calculating the carbon foot print
     }
 
     private String setModel(String model) {
@@ -39,8 +40,8 @@ public class Car implements CarbonFootprint {
         return this.averageConsumption;
     }
 
-    private double setDistanceTraveled(double distancetraveled) {
-        return distancetraveled;
+    private double setDistanceTraveled(double distanceTraveled) {
+        return distanceTraveled;
     }
 
     public double getDistanceTraveled() {
@@ -53,7 +54,7 @@ public class Car implements CarbonFootprint {
 
     private int setFuelFlag(int fuelTypeFlag) {
         // Validate
-        if (fuelTypeFlag > 0 && fuelTypeFlag <= 2) {
+        if (fuelTypeFlag >= 0 && fuelTypeFlag < 2) {
             return fuelTypeFlag;
         }
         return 10; // Error code
@@ -76,8 +77,6 @@ public class Car implements CarbonFootprint {
         final int DISTANCE = 100;
         double rate = 0; // amount of CO2 produced per Km
 
-        setFuelType(); // Update the fuel type before calculating
-
         switch (this.fuelFlag) {
             case 1:
                 // This is for diesel
@@ -96,11 +95,11 @@ public class Car implements CarbonFootprint {
     // update the fuel type
     private void setFuelType() {
         switch (this.fuelFlag) {
-            case 1:
+            case 0:
                 // DIESEL
                 this.fuelType = FuelType.DIESEL;
                 break;
-            case 2:
+            case 1:
                 // PETROL
                 this.fuelType = FuelType.PETROL;
                 break;

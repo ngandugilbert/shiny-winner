@@ -1,6 +1,5 @@
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
-
 import Question1.Bicycle;
 
 public class BicycleTests {
@@ -13,12 +12,11 @@ public class BicycleTests {
 
         // act
         double actual = bicycle.getDistanceTraveled();
-        
+
         // assert
         assertEquals(expected, actual);
     }
 
-    
     @Test
     // Test the getCarbonFootprint method
     public void testGetCarbonFootprint() {
@@ -27,8 +25,8 @@ public class BicycleTests {
         double expected = 0.33; // 100 * 0.0033
 
         // act
-        double actual = bicycle.getCarbonFootprint(); 
-        
+        double actual = bicycle.getCarbonFootprint();
+
         // assert
         assertEquals(expected, actual);
     }

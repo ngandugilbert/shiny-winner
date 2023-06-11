@@ -16,7 +16,7 @@ public class Program {
         // create an array that will hold the objects of the classes
         ArrayList<CarbonFootprint> producer = new ArrayList<CarbonFootprint>();
 
-        producer.add(new Car("Vitz", 8, 1500, 4));
+        producer.add(new Car("Vitz", 8, 1500, 1));
 
         producer.add(new Building(100, 0.3929, 100, 100, 100, 100, 100));
         
@@ -69,8 +69,6 @@ public class Program {
 
             System.out.print("Bicycle Details\n\nDistance Traveled: "
                     + myBicycle.getDistanceTraveled()
-                    + "\nCarbon Footprint: "
-                    + myBicycle.getCarbonFootprint()
                     + "\n");
                     
             line();
