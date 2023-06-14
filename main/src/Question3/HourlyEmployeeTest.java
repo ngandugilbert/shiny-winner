@@ -15,6 +15,7 @@ public class HourlyEmployeeTest {
     System.out.printf("%s %s%n", "Social security number is", employee.getSocialSecurityNumber());
     System.out.printf("%s %.2f%n", "Hourly Wage", employee.getHourlyWage());
     System.out.printf("%s %d%n", "Commission rate is", employee.getHoursWorked());
+    System.out.printf("%s %.2f%n", "earnings is", employee.earnings());
 
     employee.setHours(90);
     employee.setWage(50);

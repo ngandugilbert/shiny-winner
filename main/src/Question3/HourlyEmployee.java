@@ -8,6 +8,7 @@ public class HourlyEmployee extends Employee {
             int hoursWorked) {
         super(firstName, lastName, socialSecurityNumber);
         setHours(hoursWorked); // Set the hours worked
+        setWage(hourlyWage); // set hourly wage
     }
 
     // get hours worked
@@ -63,10 +64,10 @@ public class HourlyEmployee extends Employee {
 
     @Override
     public String toString() {
-        return String.format("%sHours Worked: %d%nHourly Wage: %.2f%n",
+        return String.format("%sHours Worked: %d%nHourly Wage: %.2f%nEarnings: %.2f",
             super.toString(),
             getHoursWorked(),
-            getHourlyWage());
+            getHourlyWage(), earnings());
     }
 
 }
