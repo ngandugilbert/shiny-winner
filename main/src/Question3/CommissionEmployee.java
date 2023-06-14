@@ -10,7 +10,7 @@ public class CommissionEmployee extends Employee {
 
         // if grossSales is invalid throw exception
         if (grossSales < 0)
-            throw new IllegalArgumentException("Gross sales must be >= 0");
+            throw new IllegalArgumentException("Gross Sales must be >= 0");
 
         // if commissionRate is invalid throw exception
         if (commissionRate <= 0.0 || commissionRate >= 1.0)
@@ -54,6 +54,6 @@ public class CommissionEmployee extends Employee {
     // return String representation of CommissionEmployee object
     @Override
     public String toString() {
-        return String.format("%sGross sales: %d%nCommission Rate: %.2f%n", super.toString(), getGrossSales(), getCommissionRate());
+        return String.format("%sGross Sales: %d%nCommission Rate: %.2f%n", super.toString(), getGrossSales(), getCommissionRate());
     }
 } // end class CommissionEmployee
