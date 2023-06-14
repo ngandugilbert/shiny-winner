@@ -26,7 +26,13 @@ public class Employee{
         return this.socialSecurityNumber;
     }
 
+    // // get earnings
+    // public double earnings(){
+    //     return
+    // }
+
+    @Override
     public String toString(){
-        return "";
+        return String.format("First Name: %s%nLast Name: %s%nSocial Security Number: %d%n", getFirstName(), getLastName(), getSocialSecurityNumber());
     }
 }

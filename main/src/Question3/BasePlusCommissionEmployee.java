@@ -6,7 +6,7 @@ public class BasePlusCommissionEmployee extends CommissionEmployee {
     public BasePlusCommissionEmployee(String firstName,
             String lastName,
             int socialSecurityNumber,
-            double grossSales,
+            int grossSales,
             double commissionRate,
             double baseSalary) {
 
@@ -33,17 +33,20 @@ public class BasePlusCommissionEmployee extends CommissionEmployee {
         return baseSalary;
     }
 
+    @Override
     // get earnings
     public double earnings() {
-        return baseSalary + (getCommissionRate() * getGrossSales());
+        return baseSalary + super.earnings();
     }
 
     // return String representation of BasePlusCommissionEmployee
+    // @Override
+    // public String toString() {
+    // return String.format("%s%n%s: %.2d%%n%s: %.2f", super.toString(),
+    // "Gross sales", getGrossSales(), "Commission rate", getCommissionRate());
+    // }
     @Override
     public String toString() {
-        return String.format(
-                "%s: %s %s%n%s: %s%n%s: %.2f%n%s: %.2f%n%s: %.2f", "base-salaried commission employee", getFirstName(),
-                getLastName(),"social security number", getSocialSecurityNumber(), "gross sales", getGrossSales(), "commission rate", getCommissionRate(), "base salary",
-                baseSalary);
+        return String.format("Base Plus Commission Emplyee%n%sBase Salary: %.2f%n", super.toString(), getBaseSalary());
     }
 }

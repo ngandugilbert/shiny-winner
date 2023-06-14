@@ -1,16 +1,16 @@
 package Question3;
 
 public class CommissionEmployee extends Employee {
-    private double grossSales;
+    private int grossSales;
     private double commissionRate;
 
-    public CommissionEmployee(String firstName, String lastName, int socialSecurityNumber, double grossSales,
+    public CommissionEmployee(String firstName, String lastName, int socialSecurityNumber, int grossSales,
             double commissionRate) {
         super(firstName, lastName, socialSecurityNumber);
 
         // if grossSales is invalid throw exception
-        if (grossSales < 0.0)
-            throw new IllegalArgumentException("Gross sales must be >= 0.0");
+        if (grossSales < 0)
+            throw new IllegalArgumentException("Gross sales must be >= 0");
 
         // if commissionRate is invalid throw exception
         if (commissionRate <= 0.0 || commissionRate >= 1.0)
@@ -21,14 +21,14 @@ public class CommissionEmployee extends Employee {
     }
 
     // set gross sales amount
-    public void setGrossSales(double grossSales) {
-        if (grossSales < 0.0)
-            throw new IllegalArgumentException("Gross sales must be >= 0.0");
+    public void setGrossSales(int grossSales) {
+        if (grossSales < 0)
+            throw new IllegalArgumentException("Gross sales must be >= 0");
         this.grossSales = grossSales;
     }
 
     // return gross sales amount
-    public double getGrossSales() {
+    public int getGrossSales() {
         return grossSales;
     }
 
@@ -54,15 +54,6 @@ public class CommissionEmployee extends Employee {
     // return String representation of CommissionEmployee object
     @Override
     public String toString() {
-        return String.format("%s: %s %s%n%s: %s%n%s: %.2f%n%s: %.2f",
-                "commission employee",
-                getFirstName(),
-                getLastName(),
-                "social security number",
-                getSocialSecurityNumber(),
-                "gross sales",
-                getGrossSales(),
-                "commission rate",
-                getCommissionRate());
+        return String.format("%sGross sales: %d%nCommission Rate: %.2f%n", super.toString(), getGrossSales(), getCommissionRate());
     }
 } // end class CommissionEmployee
