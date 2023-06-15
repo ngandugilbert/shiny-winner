@@ -9,13 +9,13 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 
 public class GameGUINew extends JFrame {
@@ -25,6 +25,9 @@ public class GameGUINew extends JFrame {
     private JTextField guessInput;
     private Guess game;
     private final String ERROR = "Invalid input: Enter values between 1 - 1000.";
+    private final Color PRIMARY = new Color(255, 255, 255);
+    private final Color BUTTON_COLOR = new Color(57, 72, 103);
+    private final Color TEXT_COLOR = new Color(33, 42, 62);
 
     public GameGUINew() {
         super("Guess The Number");
@@ -35,7 +38,6 @@ public class GameGUINew extends JFrame {
         start();
 
         JPanel panel = new JPanel();
-        panel.setBackground(Color.WHITE);
         panel.setPreferredSize(new Dimension(300, 300));
 
         // Create GridBagConstraints to specify the placement of the panel
@@ -56,58 +58,81 @@ public class GameGUINew extends JFrame {
         topInnerPanel.setPreferredSize(new Dimension(50, 40));
         panel.add(topInnerPanel, BorderLayout.NORTH);
 
+        /* *****************Bottom Panel*************************** */
+        // adding components to the center panel
+
         JPanel bottomInnerPanel = new JPanel();
-        bottomInnerPanel.setBackground(new Color(255, 255, 255));
+        bottomInnerPanel.setBackground(PRIMARY);
         bottomInnerPanel.setPreferredSize(new Dimension(50, 50));
         panel.add(bottomInnerPanel, BorderLayout.SOUTH);
 
+        // Restart the game button
         restart = new JButton("Restart");
-        restart.setBackground(new Color(57, 72, 103));
+        restart.setBackground(BUTTON_COLOR);
         restart.setBorderPainted(false);
         restart.setFocusPainted(false);
-        restart.setForeground(Color.WHITE);
+        restart.setForeground(PRIMARY);
         restart.setPreferredSize(new Dimension(200, 40));
         restart.setVisible(false);
         bottomInnerPanel.add(restart);
 
+        /* **********************Content Panel********************** */
+        // adding content panel
         JPanel content = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 30));
         panel.add(content, BorderLayout.CENTER);
-        content.setBackground(new Color(255, 255, 255));
+        content.setBackground(PRIMARY);
+
+        /* **********************Intro Panel********************** */
+        // This is the text panel that will contain the game text
 
         JPanel introPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         introPanel.setPreferredSize(new Dimension(300, 50));
-        introPanel.setBackground(new Color(255, 255, 255));
+        introPanel.setBackground(PRIMARY);
+
+        /* ********************intro Labels************************ */
+        // creating and adding the two text labels
 
         JLabel intro1 = new JLabel("I have a number between 1 and 1000.");
-        intro1.setForeground(new Color(33, 42, 62));
+        intro1.setForeground(TEXT_COLOR);
         intro1.setFont(new Font("Arial", Font.BOLD, 14));
+
         JLabel intro2 = new JLabel("Can you guess the number?");
         intro2.setFont(new Font("Arial", Font.BOLD, 15));
-        intro2.setForeground(new Color(33, 42, 62));
+        intro2.setForeground(TEXT_COLOR);
+
         introPanel.add(intro1);
         introPanel.add(intro2);
 
-        content.add(introPanel, BorderLayout.CENTER);
+        content.add(introPanel, BorderLayout.CENTER); // add the components to content
+
+        /* *******************Guess Panel************************* */
 
         JPanel guessPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         guessPanel.setPreferredSize(new Dimension(300, 100));
-        guessPanel.setBackground(new Color(255, 255, 255));
+        guessPanel.setBackground(PRIMARY);
 
+        // Customizing the input field
         guessInput = new JTextField();
         guessInput.setPreferredSize(new Dimension(250, 40));
         Border bottomBorder = BorderFactory.createMatteBorder(0, 0, 2, 0, Color.BLACK);
         guessInput.setBackground(new Color(241, 246, 249));
         guessInput.setBorder(bottomBorder);
         guessInput.setFont(new Font("Arial", Font.BOLD, 16));
+        guessInput.setHorizontalAlignment(SwingConstants.CENTER);
+
+        /* **********************Error Panel********************** */
 
         JPanel errorPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         errorPanel.setPreferredSize(new Dimension(250, 50));
-        errorPanel.setBackground(new Color(255, 255, 255));
+        errorPanel.setBackground(PRIMARY);
         errorPanel.setBounds(20, 20, 20, 20);
 
+        /* ********************Status label************************ */
+        //
         status = new JLabel();
         status.setForeground(Color.RED);
         status.setFont(new Font("Arial", Font.PLAIN, 12));
+
         errorPanel.add(status);
         errorPanel.setVisible(true);
 
@@ -116,6 +141,7 @@ public class GameGUINew extends JFrame {
 
         content.add(guessPanel);
 
+        /* *********************Action Listeners*********************** */
         // Add event listener to button
         fieldHandler handler = new fieldHandler();
         guessInput.addActionListener(handler);
@@ -163,9 +189,7 @@ public class GameGUINew extends JFrame {
 
     // Start the game
     private void start() {
-
         game = new Guess();
-
     }
 
     // play again

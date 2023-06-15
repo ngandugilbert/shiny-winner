@@ -13,22 +13,30 @@ import java.awt.Color;
 public class Guess {
 
     private int guessNumber;
-    private Color color;
-    private String status;
+    private Color statusColor;
+    private String statusMsg;
     private boolean isPlay = true;
+    private final String START_MESSAGE = "Enter your first guess.";
+    private final String HOT_MESSAGE = "Too High, try again.";
+    private final String COLD_MESSAGE = "Too Low, try again.";
+    private final String CORRECT_MESSAGE = "Hooray! That was correct!";
+    private final Color HOT = Color.RED;
+    private final Color COLD = Color.BLUE;
+    private final Color CORRECT = Color.GREEN;
 
     public Guess() {
         this.setGuessNumber();
+        this.statusMsg = this.START_MESSAGE;
     }
 
     // status
     public String getStatus() {
-        return this.status;
+        return this.statusMsg;
     }
 
     // get the current color
     public Color getColor() {
-        return this.color;
+        return this.statusColor;
     }
 
   
@@ -64,7 +72,7 @@ public class Guess {
         return false;
     }
 
-    // Validate user input
+    // Validate user input to be between 1 and 1000
     private boolean isValid(int userInput) {
         if (userInput > 0 && userInput <= 1000) {
             return true;
@@ -73,19 +81,19 @@ public class Guess {
     }
 
     // update status
-    private void update(int flag) {
-        switch (flag) {
+    private void update(int statusFlag) {
+        switch (statusFlag) {
             case 1:
                 // update too high
-                setState(Color.RED, "Too High");
+                setState(HOT, HOT_MESSAGE);
                 break;
             case 2:
                 // update too low
-                setState(Color.BLUE, "Too Low");
+                setState(COLD, COLD_MESSAGE);
                 break;
             case 3:
                 // update correct
-                setState(Color.GREEN, "Correct!");
+                setState(CORRECT,CORRECT_MESSAGE);
                 this.isPlay = false;
                 break;
             default:
@@ -94,9 +102,9 @@ public class Guess {
     }
 
     // Set the state
-    private void setState(Color color, String statusMsg) {
-        this.color = color;
-        this.status = statusMsg;
+    private void setState(Color statusColor, String statusMsg) {
+        this.statusColor = statusColor;
+        this.statusMsg = statusMsg;
     }
 
 }

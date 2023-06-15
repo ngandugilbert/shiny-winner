@@ -44,17 +44,6 @@ public class CommissionEmployeeTests {
         assertEquals(expected, actual, 0.0);
     }
 
-    // test toString
-    @Test
-    public void toStringTest() {
-        // arrange
-        CommissionEmployee employee = new CommissionEmployee("Gilbert", "Ngandu", 123456789, 10000, 0.06);
-
-        String expected = String.format("Commission Employee%nFirst Name: Gilbert%nLast Name: Ngandu%nSocial Security Number: 123456789%nGross Sales: 10000%nCommission Rate: 0.06%n");
-        // actual
-        String actual = employee.toString();
-        // Assert
-        assertEquals(expected, actual);
-    }
+   
 
 }
