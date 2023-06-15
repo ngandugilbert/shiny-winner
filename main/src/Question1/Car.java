@@ -1,3 +1,8 @@
+/*
+ * Author: Gilbert Ng'andu
+ * references:
+ *             1. https://chat.openai.com/share/5c2910b3-3127-4223-9d85-473b93a018b0
+ */
 package Question1;
 
 // This is the cars class that calculates the carbon foot print from different cars
@@ -74,7 +79,7 @@ public class Car implements CarbonFootprint {
 
         final double PETROL_RATE = 8.89; // per 100km
         final double DIESEL_RATE = 10.14; // per 100km
-        final int DISTANCE = 100;
+        final int DISTANCE = 100; // Used to convert to meters
         double rate = 0; // amount of CO2 produced per Km
 
         switch (this.fuelFlag) {

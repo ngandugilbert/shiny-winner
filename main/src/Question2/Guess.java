@@ -88,6 +88,8 @@ public class Guess {
                 setState(Color.GREEN, "Correct!");
                 this.isPlay = false;
                 break;
+            default:
+                break;
         }
     }
 

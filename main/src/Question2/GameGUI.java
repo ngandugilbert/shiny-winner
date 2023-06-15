@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-public class Game extends JFrame {
+public class GameGUI extends JFrame {
     private JButton restart;
     private JLabel intro;
     private JLabel status;
@@ -23,7 +23,7 @@ public class Game extends JFrame {
     private final String start = "Enter your first guess";
     private final String ERROR = "Invalid input: Enter values between 1 - 1000.";
 
-    public Game() {
+    public GameGUI() {
         super("Guess The Number");
         setLayout(new GridLayout(1, 1));
 

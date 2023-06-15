@@ -15,4 +15,18 @@ public class GuessTests {
         // Assert
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void getStatusTest(){
+        // Arrange
+        Guess game = new Guess();
+        game.play(10000);
+        var expected = "Guess a number between 1 and 1000";
+        
+        // actual 
+        String actual = game.getStatus();
+        
+        // Assert
+        assertEquals(expected, actual);
+    }
 }

@@ -1,12 +1,15 @@
 package Question2;
 
+import java.awt.Color;
+
 import javax.swing.JFrame;
 
 public class Program {
     public static void main(String[] args) {
-        Game frame = new Game();
+        GameGUINew frame = new GameGUINew();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 500);
+        frame.getContentPane().setBackground(new Color(33,42,62));
+        frame.setSize(500, 600);
         frame.setVisible(true);
     }
 }
