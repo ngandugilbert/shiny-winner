@@ -33,10 +33,11 @@ public class GameGUINew extends JFrame {
     private final Color PRIMARY = new Color(255, 255, 255);
     private final Color BUTTON_COLOR = new Color(57, 72, 103);
     private final Color TEXT_COLOR = new Color(33, 42, 62);
+    private JButton logout;
     // private int prevMove;
 
     public GameGUINew(String userName) {
-        super("Guess The Number");
+        super("Guess Storm");
         // Set the layout manager of the content pane to GridBagLayout
         setLayout(new GridBagLayout());
 
@@ -71,6 +72,16 @@ public class GameGUINew extends JFrame {
         // loginJLabel.setBorder(new EmptyBorder(10, 0, 0, 0));
         topInnerPanel.add(username, BorderLayout.CENTER);
         topInnerPanel.add(loginJLabel, BorderLayout.WEST);
+
+        ImageIcon logoutIcon = new ImageIcon("main\\src\\Question2\\images\\sign-out-alt.png");
+         logout = new JButton(reScaleImages(logoutIcon, 20, 20));
+        logout.setToolTipText("logout");
+        logout.setBackground(BUTTON_COLOR);
+        logout.setBorderPainted(false);
+        logout.setFocusPainted(false);
+        logout.setForeground(PRIMARY);
+
+        topInnerPanel.add(logout, BorderLayout.EAST);
 
         panel.add(topInnerPanel, BorderLayout.NORTH);
 
@@ -162,6 +173,7 @@ public class GameGUINew extends JFrame {
         fieldHandler handler = new fieldHandler();
         guessInput.addActionListener(handler);
         restart.addActionListener(handler);
+        logout.addActionListener(handler);
 
     }
 
@@ -200,6 +212,11 @@ public class GameGUINew extends JFrame {
                 // play the game again
                 playAgain();
             }
+
+            else if(event.getSource() == logout){
+                closeWindow();
+                new LauchGeneric<Accounts>(new Accounts());
+            }
         }
     }
 
@@ -231,5 +248,9 @@ public class GameGUINew extends JFrame {
 
         return scaledIcon;
     }
-
+    // close the current window
+    private void closeWindow() {
+        this.setVisible(false);
+        this.dispose();
+    }
 }

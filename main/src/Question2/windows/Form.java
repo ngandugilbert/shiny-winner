@@ -237,6 +237,7 @@ public class Form extends JFrame {
         }
     }
 
+    // close the current window
     private void closeWindow() {
         this.setVisible(false);
         this.dispose();

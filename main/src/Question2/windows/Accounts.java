@@ -25,7 +25,7 @@ public class Accounts extends JFrame {
     private JPanel panel;
 
     public Accounts() {
-        super("Guess Game");
+        super("Guess Storm");
         // Set the layout manager of the content pane to GridBagLayout
         setLayout(new GridBagLayout());
 
