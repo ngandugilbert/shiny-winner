@@ -1,4 +1,4 @@
-package Question2;
+package Question2.windows;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -7,9 +7,11 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,6 +19,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
+
+import Question2.Guess;
+
 
 public class GameGUINew extends JFrame {
     // This is the new gui for the game
@@ -28,17 +33,18 @@ public class GameGUINew extends JFrame {
     private final Color PRIMARY = new Color(255, 255, 255);
     private final Color BUTTON_COLOR = new Color(57, 72, 103);
     private final Color TEXT_COLOR = new Color(33, 42, 62);
+    // private int prevMove;
 
-    public GameGUINew() {
+    public GameGUINew(String userName) {
         super("Guess The Number");
         // Set the layout manager of the content pane to GridBagLayout
         setLayout(new GridBagLayout());
 
         // Start the game
-        start();
+        start(); 
 
         JPanel panel = new JPanel();
-        panel.setPreferredSize(new Dimension(300, 300));
+        panel.setPreferredSize(new Dimension(300, 320));
 
         // Create GridBagConstraints to specify the placement of the panel
         GridBagConstraints gidbagConstraints = new GridBagConstraints();
@@ -56,6 +62,16 @@ public class GameGUINew extends JFrame {
         JPanel topInnerPanel = new JPanel();
         topInnerPanel.setBackground(new Color(155, 164, 181));
         topInnerPanel.setPreferredSize(new Dimension(50, 40));
+        topInnerPanel.setLayout(new BorderLayout());
+
+        JLabel username = new JLabel(userName);
+         // add login Icon
+        ImageIcon loginIcon = new ImageIcon("main\\src\\Question2\\images\\logo.png");
+        JLabel loginJLabel = new JLabel(reScaleImages(loginIcon, 60, 60));
+        // loginJLabel.setBorder(new EmptyBorder(10, 0, 0, 0));
+        topInnerPanel.add(username, BorderLayout.CENTER);
+        topInnerPanel.add(loginJLabel, BorderLayout.WEST);
+
         panel.add(topInnerPanel, BorderLayout.NORTH);
 
         /* *****************Bottom Panel*************************** */
@@ -202,6 +218,18 @@ public class GameGUINew extends JFrame {
         restart.setVisible(false);
         game = null; // delete the previous game
         start();
+    }
+
+     // rescale images
+     private ImageIcon reScaleImages(ImageIcon image, int height, int width) {
+
+        // Resize the image while preserving the aspect ratio
+        Image scaledImage = image.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
+
+        // Create a new ImageIcon with the resized image
+        ImageIcon scaledIcon = new ImageIcon(scaledImage);
+
+        return scaledIcon;
     }
 
 }

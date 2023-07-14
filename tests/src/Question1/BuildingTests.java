@@ -1,108 +1,50 @@
 import static org.junit.Assert.assertEquals;
+
+import java.util.ArrayList;
+
 import org.junit.Test;
-import Question1.Building;
+
+import Question1.Building.Building;
+import Question1.Building.BuildingEmitter;
+import Question1.Building.EmitterEnum;
 
 public class BuildingTests {
+   
+    // Test set emitters
     @Test
-    // Test the getElectricityConsumption method.
-    // The electricity carbon footprint
-    public void testGetElectricityConsumptionFootprint() {
-        // arrange
-        Building building = new Building(100.0, 0.3929, 0, 0, 0, 0, 0);
-        double expected = 0.04; //
+    public void testSetEmitter(){
+        // Arrange
+        var building = new Building();  // Create the building class object
+        var  emitters = new ArrayList<BuildingEmitter>();
 
-        // act
-        double actual = building.getElectricity();
+        emitters.add(new BuildingEmitter(10.0, EmitterEnum.ELECTRICITY_F));
+        building.setEmitters(emitters); // set the building emitters
 
-        // assert
+        var expected = emitters;
+
+        // Actual
+        var actual = building.getEmitters();
+
+        // Assert
         assertEquals(expected, actual);
     }
 
+    // Test set getCarbonfootprint
     @Test
-    // Test the getHeatingOilConsumption method, which it the carbon footprint of heating oil
-    public void testGetHeatingOilConsumptionFootprint() {
-        // arrange
-        Building building = new Building(0, 0, 100.0, 0, 0, 0, 0);
-        double expected = 0.02;
+    public void testGetCarbonFootprint(){
+        // Arrange
+        var building = new Building();  // Create the building class object
+        var  emitters = new ArrayList<BuildingEmitter>();
 
-        // act
-        double actual = building.getHeatingOil();
+        emitters.add(new BuildingEmitter(10.0, EmitterEnum.ELECTRICITY_F));
+        building.setEmitters(emitters); // set the building emitters
 
-        // assert
-        assertEquals(expected, actual);
-    }
+        double expected = 5.0;
 
-    @Test
-    // Test the getNaturalGasConsumption method, which it the carbon footprint of natural gas
-    public void testGetNaturalGasFootprint() {
-        // arrange
-        Building building = new Building(0, 0, 0, 100.0, 0, 0, 0);
-        double expected = 0.02;
-
-        // act
-        double actual = building.getNaturalGas();
-
-        // assert
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    // Test the getCoalConsumption method, which it the carbon footprint of coal
-    public void testGetCoalConsumptionFootprint() {
-        // arrange
-        Building building = new Building(0, 0, 0, 0, 100.0, 0, 0);
-        double expected = 0.03;
-
-        // act
-        double actual = building.getCoal();
-
-        // assert
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    // Test the getPropaneConsumption method, which it the carbon footprint of propane
-    public void testGetPropaneConsumptionFootprint() {
-        // arrange
-        Building building = new Building(0, 0, 0, 0, 0, 100.0, 0);
-        double expected = 0.15;
-
-        // act
-        double actual = building.getPropane();
-
-        // assert
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    // Test the getWoodenPellets method, which it the carbon footprint of wooden pellets
-    public void testGetWoodenPelletsFootprint() {
-        // arrange
-        Building building = new Building(0, 0, 0, 0, 0, 0, 100.0);
-        double expected = 5.06;
-
-        // act
-        double actual = building.getWoodenPellets();
-
-        // assert
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    // Test the getCarbonFootprint method, which it the carbon footprint of the building
-    // The carbon footprint of the building is the sum of the carbon footprint of all the energy sources
-    public void testGetCarbonFootprint() {
-        // arrange
-        Building building = new Building(100, 0.32, 100, 100, 100, 100, 100);
-        double expected = 5.31;
-
-        // act
+        // Actual
         double actual = building.getCarbonFootprint();
 
-        // assert
+        // Assert
         assertEquals(expected, actual);
     }
-    
-   
-
 }

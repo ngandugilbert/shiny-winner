@@ -10,12 +10,12 @@ public class BasePlusCommissionEmployeeTest {
         // get base-salaried commission employee data
         System.out.printf(
                 "Employee information obtained by get methods:%n");
-        System.out.printf("%s %s%n", "First name is", employee.getFirstName());
-        System.out.printf("%s %s%n", "Last name is", employee.getLastName());
-        System.out.printf("%s %s%n", "Social security number is", employee.getSocialSecurityNumber());
-        System.out.printf("%s %d%n", "Gross sales is", employee.getGrossSales());
-        System.out.printf("%s %.2f%n", "Commission rate is", employee.getCommissionRate());
-        System.out.printf("%s %.2f%n", "Base salary is", employee.getBaseSalary());
+        System.out.printf("%s %s%n", "First name: ", employee.getFirstName());
+        System.out.printf("%s %s%n", "Last name: ", employee.getLastName());
+        System.out.printf("%s %s%n", "Social security number: ", employee.getSocialSecurityNumber());
+        System.out.printf("%s %d%n", "Gross sales: ", employee.getGrossSales());
+        System.out.printf("%s %.2f%n", "Commission rate: ", employee.getCommissionRate());
+        System.out.printf("%s %.2f%n", "Base salary: ", employee.getBaseSalary());
 
         // Modified base salary
         employee.setBaseSalary(1000);

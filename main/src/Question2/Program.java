@@ -1,15 +1,17 @@
 package Question2;
 
-import java.awt.Color;
+import Question2.windows.Accounts;
 
-import javax.swing.JFrame;
+import Question2.windows.LauchGeneric;
 
 public class Program {
     public static void main(String[] args) {
-        GameGUINew frame = new GameGUINew();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().setBackground(new Color(33,42,62));
-        frame.setSize(500, 600);
-        frame.setVisible(true);
+        launch();
+    }
+
+    public static void launch() {
+
+        new LauchGeneric<Accounts, Accounts >(new Accounts());
+
     }
 }
