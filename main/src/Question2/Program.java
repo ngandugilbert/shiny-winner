@@ -11,7 +11,7 @@ public class Program {
 
     public static void launch() {
 
-        new LauchGeneric<Accounts, Accounts >(new Accounts());
+        new LauchGeneric<Accounts>(new Accounts());
 
     }
 }

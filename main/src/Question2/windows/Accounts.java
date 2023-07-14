@@ -142,6 +142,7 @@ public class Accounts extends JFrame {
     }
 
     private void launch(Form form) {
-        new LauchGeneric<Form, Accounts>(form, this); 
+        this.dispose();
+        new LauchGeneric<Form>(form); 
     }
 }

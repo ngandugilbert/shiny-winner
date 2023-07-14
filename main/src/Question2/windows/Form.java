@@ -34,7 +34,9 @@ public class Form extends JFrame {
     private JPasswordField password;
     private JPanel panel;
 
-    public Form(){}
+    public Form() {
+    }
+
     public Form(String Title, int formFlag) {
         super(Title);
         // Set the layout manager of the content pane to GridBagLayout
@@ -185,8 +187,8 @@ public class Form extends JFrame {
     }
 
     // create event handler class
-    private class eventListener  extends Form implements ActionListener{
-        
+    private class eventListener extends Form implements ActionListener {
+
         @Override
         public void actionPerformed(ActionEvent e) {
             String userName = username.getText();
@@ -207,8 +209,10 @@ public class Form extends JFrame {
 
                 } else {
                     // Login was a success
+                    closeWindow();
                     JOptionPane.showMessageDialog(panel, "Login successful!");
-                    new LauchGeneric<GameGUINew, Form>(new GameGUINew(userName));
+
+                    new LauchGeneric<GameGUINew>(new GameGUINew(userName));
                 }
 
             } else if (e.getSource() == signup) {
@@ -222,13 +226,19 @@ public class Form extends JFrame {
                 } else {
                     // user does not exist
                     if (conn.createAccount(userName, userPassword)) {
-                        new LauchGeneric<GameGUINew, Form>(new GameGUINew(userName));   
+                        closeWindow();
+                        JOptionPane.showMessageDialog(panel, "sign up successful!");
+                        new LauchGeneric<GameGUINew>(new GameGUINew(userName));
                     }
-                    ;
-                    JOptionPane.showMessageDialog(panel, "sign up successful!");
+
                 }
             }
             conn.disconnect();
         }
+    }
+
+    private void closeWindow() {
+        this.setVisible(false);
+        this.dispose();
     }
 }
